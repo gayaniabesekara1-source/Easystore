@@ -2398,6 +2398,26 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     document.getElementById('receiptContainer').style.display = 'block';
 });
 </script>
+    <!-- Free Unlimited Gemini AI Chatbot Widget -->
+<div id="ai-chat-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: sans-serif;">
+  <button id="ai-open-btn" onclick="toggleChat()" style="background: #007bff; color: white; border: none; padding: 12px 18px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">💬 Chat with AI</button>
+  
+  <div id="ai-chat-box" style="display: none; width: 320px; height: 420px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden; margin-bottom: 10px;">
+    <div style="background: #007bff; color: white; padding: 12px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+      <span>Easystore AI Assistant</span>
+      <button onclick="toggleChat()" style="background: none; border: none; color: white; font-size: 16px; cursor: pointer;">✖</button>
+    </div>
+    <div id="ai-messages" style="flex: 1; padding: 10px; overflow-y: auto; font-size: 14px; background: #f9f9f9;"></div>
+    <div style="display: flex; border-top: 1px solid #ccc; padding: 5px; background: #fff;">
+      <input type="text" id="ai-input" placeholder="Type a message..." style="flex: 1; border: none; padding: 8px; outline: none;">
+      <button onclick="sendMessage()" style="background: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">Send</button>
+    </div>
+  </div>
+</div>
+</script>
+
+  
+
 </body>
 </html>
 
