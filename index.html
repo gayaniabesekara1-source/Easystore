@@ -2337,11 +2337,70 @@ html_part5 = '''
             if (!btn && dd && dd.style.display === 'block') dd.style.display = 'none';
         });
     </script>
+    <!-- Order Form and Receipt Section -->
+<div id="orderFormContainer" style="max-width: 500px; margin: 40px auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; margin-bottom: 15px;">Quick Checkout</h2>
+    <form id="checkoutForm">
+        <label style="display:block; margin-bottom:5px; font-weight:bold;">Full Name:</label>
+        <input type="text" id="custName" required style="width:100%; margin-bottom:12px; padding:10px; border:1px solid #ccc; border-radius:6px;">
+        
+        <label style="display:block; margin-bottom:5px; font-weight:bold;">Delivery Address:</label>
+        <textarea id="custAddress" required style="width:100%; margin-bottom:12px; padding:10px; border:1px solid #ccc; border-radius:6px;"></textarea>
+        
+        <label style="display:block; margin-bottom:5px; font-weight:bold;">Phone Number:</label>
+        <input type="tel" id="custPhone" required style="width:100%; margin-bottom:15px; padding:10px; border:1px solid #ccc; border-radius:6px;">
+        
+        <button type="submit" style="width:100%; padding:12px; background:#2563EB; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold; font-size:16px;">
+            PLACE ORDER & GET RECEIPT
+        </button>
+    </form>
+</div>
+
+<div id="receiptContainer" style="display:none; max-width: 500px; margin: 40px auto; padding: 20px; border: 2px dashed #2563EB; border-radius: 12px; background: #f8fafc;">
+    <h2 style="color:#2563EB; text-align:center;">🎉 Order Confirmed!</h2>
+    <p style="text-align:center; font-size:13px; color:#555;">Thank you for your order with EasyStore.</p>
+    <hr style="margin:15px 0;">
+    
+    <p style="margin-bottom:8px;"><strong>Order ID:</strong> <span id="recOrderID" style="color:#F97316; font-weight:bold;"></span></p>
+    <p style="margin-bottom:8px;"><strong>Customer Name:</strong> <span id="recName"></span></p>
+    <p style="margin-bottom:8px;"><strong>Shipping Address:</strong> <span id="recAddress"></span></p>
+    <p style="margin-bottom:8px;"><strong>Phone:</strong> <span id="recPhone"></span></p>
+    <hr style="margin:15px 0;">
+    
+    <div style="background:#e2e8f0; padding:12px; border-radius:8px;">
+        <h4 style="margin-bottom:5px;">💰 Bank Transfer Instructions:</h4>
+        <p style="font-size:13px; margin:0;">Bank: Commercial Bank / Sampath Bank</p>
+        <p style="font-size:13px; margin:0;">Account Name: [Your Name]</p>
+        <p style="font-size:13px; margin:0;">Account No: 1234XXXXXXXX</p>
+        <p style="font-size:13px; color:#d97706; margin-top:5px;">*Please use your Order ID as the Reference.</p>
+    </div>
+    
+    <button onclick="window.print()" style="margin-top:15px; width:100%; padding:12px; background:#10b981; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">
+        🖨️ Download / Print Receipt
+    </button>
+</div>
+
+<script>
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('custName').value;
+    const address = document.getElementById('custAddress').value;
+    const phone = document.getElementById('custPhone').value;
+    const randomOrderID = "ES-" + Math.floor(100000 + Math.random() * 900000);
+
+    document.getElementById('recOrderID').innerText = randomOrderID;
+    document.getElementById('recName').innerText = name;
+    document.getElementById('recAddress').innerText = address;
+    document.getElementById('recPhone').innerText = phone;
+
+    document.getElementById('orderFormContainer').style.display = 'none';
+    document.getElementById('receiptContainer').style.display = 'block';
+});
+</script>
 </body>
 </html>
-'''
 
-with open('/mnt/agents/output/easystore.html', 'a', encoding='utf-8') as f:
  
 
 
